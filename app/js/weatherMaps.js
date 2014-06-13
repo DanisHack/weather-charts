@@ -9,7 +9,7 @@ map.directive("sparkLine", function(){
 		require:"?ngModel",
 
 		scope:{
-			sendTo:"@"
+			ngModel:"="
 		},
 
 		controller:['$scope', '$http', function($scope, $http){
@@ -30,9 +30,10 @@ map.directive("sparkLine", function(){
 			}
 		}],
 
-		link:function(scope, iElem, iAttr){
+		link:function(scope, iElem, iAttrs){
+			scope.getTemp(iAttrs.ngModel);
 		},
 
-		template:"<div class='sparkline'><h4>Weather for {{ngModel}}</h4></div>"
+		template:"<div class='sparkline'><h4>Weather for {{ngModel}}</h4><p>{{weather}}</p></div>"
 	}
 });
